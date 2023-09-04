@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>IPv6-based Cloud-Oriented Networking</title>
+<meta content="Hang Shi" name="author">
+<meta content="Cheng Li" name="author">
+<meta content="Zhenbin Li" name="author">
+<meta content="
+       This document describes the scenarios, requirements and technologies
+for IPv6-based Cloud-oriented Networking. 
+    " name="description">
+<meta content="xml2rfc 3.18.0" name="generator">
+<meta content="draft-shi-cats-ipv6-based-con-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.18.0
+    Python 3.11.5
+    ConfigArgParse 1.5.3
+    google-i18n-address 3.1.0
+    intervaltree 3.1.0
+    Jinja2 3.1.2
+    lxml 4.9.3
+    platformdirs 3.10.0
+    pycountry 22.3.5
+    PyYAML 6.0
+    requests 2.31.0
+    setuptools 67.7.2
+    six 1.16.0
+    wcwidth 0.2.6
+-->
+<link href="draft-shi-cats-ipv6-based-con.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cabin Condensed", sans-serif;
+  font-weight: 600;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+}
+:is(ol, ul) :is(ol, ul) {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  line-height: 1;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+}
+dl.olPercent {
+  --indent: 5ch;
+}
+dl > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
+  margin-top: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
+  margin-bottom: 0;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    overflow-x: auto;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+}
+a.pilcrow[href] { color: var(--pilcrow-weak); }
+a.pilcrow[href]:hover { text-decoration: none; }
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+}
+#identifiers dt {
+  width: var(--identifier-width);
+  min-width: var(--identifier-width);
+  clear: left;
+  float: left;
+  text-align: right;
+  margin-right: 1ch;
+}
+#identifiers dd {
+  margin: 0;
+  margin-left: calc(1em + var(--identifier-width)) !important;
+  min-width: 5em;
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+#toc nav ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+#toc nav li {
+  line-height: 1.3em;
+  margin: 0.75em 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+#toc a.xref {
+  white-space: normal;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 10ch;
+  margin-right: 1.5ch;
+}
+.references dt:target::before {
+  content: "⇒";
+  width: 15px;
+  margin: 0 10px 0 -25px;
+}
+.references dd {
+  margin-left: 12ch !important;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc.active {
+      opacity: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 8px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active nav {
+    display: block;
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin-top: 2px;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  #toc nav > ul  {
+    margin-bottom: 2em;
+  }
+  #toc ul {
+    margin: 0 0 0 4px;
+    font-size: var(--small-font-size);
+  }
+  #toc ul :is(p, li) {
+    margin: 2px 0;
+    line-height: 22px;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre {
+    page-break-inside: avoid;
+  }
+  figure {
+    overflow: scroll;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Changes introduced to fix issues found during implementation */
+
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin: 8px 0.5em 0;
+}
+
+/* Provide styling for table cell text alignment */
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 20em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Give the table caption label the same styling as the figcaption */
+
+@media print {
+  .toplink {
+    display: none;
+  }
+
+  /* avoid overwriting the top border line with the ToC header */
+  #toc {
+    padding-top: 1px;
+  }
+
+  /* Avoid page breaks inside dl and author address entries */
+  dd {
+    page-break-before: avoid;
+  }
+  .vcard {
+    page-break-inside: avoid;
+  }
+
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">IPv6 based CON</td>
+<td class="right">September 2023</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Shi, et al.</td>
+<td class="center">Expires 7 March 2024</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Computing-Aware Traffic Steering</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-shi-cats-ipv6-based-con-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2023-09-04" class="published">4 September 2023</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2024-03-07">7 March 2024</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">H. Shi</div>
+<div class="org">Huawei Technologies</div>
+</div>
+<div class="author">
+      <div class="author-name">C. Li</div>
+<div class="org">Huawei Technologies</div>
+</div>
+<div class="author">
+      <div class="author-name">Z. Li</div>
+<div class="org">Huawei Technologies</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">IPv6-based Cloud-Oriented Networking</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">This document describes the scenarios, requirements and technologies
+for IPv6-based Cloud-oriented Networking.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-discussion-venues">
+<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">Discussion of this document takes place on the
+    Computing-Aware Traffic Steering Working Group mailing list (cats@ietf.org),
+    which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/cats/">https://mailarchive.ietf.org/arch/browse/cats/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+    <span><a href="https://github.com/VMatrix1900/draft-cats-ipv6-based-con">https://github.com/VMatrix1900/draft-cats-ipv6-based-con</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 7 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2023 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-problem-statement" class="internal xref">Problem Statement</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-underlay" class="internal xref">Underlay</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-overlay" class="internal xref">Overlay</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-ipv6-based-cloud-oriented-n" class="internal xref">IPv6-based Cloud-Oriented Networking</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-requirements" class="internal xref">Requirements</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
+                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-quick-connection" class="internal xref">Quick Connection</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
+                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-hybrid-network-connection" class="internal xref">Hybrid Network Connection</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
+                    <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-path-programming" class="internal xref">Path Programming</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.4">
+                    <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-resource-assurance" class="internal xref">Resource Assurance</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
+                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-deterministic-delay" class="internal xref">Deterministic Delay</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.6">
+                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-service-function-chaining" class="internal xref">Service Function Chaining</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.7">
+                    <p id="section-toc.1-1.4.2.1.2.7.1"><a href="#section-4.1.7" class="auto internal xref">4.1.7</a>.  <a href="#name-performance-measurement" class="internal xref">Performance Measurement</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.8">
+                    <p id="section-toc.1-1.4.2.1.2.8.1"><a href="#section-4.1.8" class="auto internal xref">4.1.8</a>.  <a href="#name-reliability" class="internal xref">Reliability</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.9">
+                    <p id="section-toc.1-1.4.2.1.2.9.1"><a href="#section-4.1.9" class="auto internal xref">4.1.9</a>.  <a href="#name-security" class="internal xref">Security</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.10">
+                    <p id="section-toc.1-1.4.2.1.2.10.1"><a href="#section-4.1.10" class="auto internal xref">4.1.10</a>. <a href="#name-forwarding-efficiency" class="internal xref">Forwarding Efficiency</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.11">
+                    <p id="section-toc.1-1.4.2.1.2.11.1"><a href="#section-4.1.11" class="auto internal xref">4.1.11</a>. <a href="#name-application-aware-networkin" class="internal xref">Application-Aware Networking</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-solutions" class="internal xref">Solutions</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-vpn" class="internal xref">VPN</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-path-programming-2" class="internal xref">Path Programming</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-service-function-chaining-2" class="internal xref">Service Function Chaining</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+                    <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="auto internal xref">4.2.4</a>.  <a href="#name-ipv6-based-network-slicing" class="internal xref">IPv6 based Network Slicing</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.5">
+                    <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="auto internal xref">4.2.5</a>.  <a href="#name-ipv6-based-on-path-measurem" class="internal xref">IPv6-based On-path Measurement</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.6">
+                    <p id="section-toc.1-1.4.2.2.2.6.1"><a href="#section-4.2.6" class="auto internal xref">4.2.6</a>.  <a href="#name-reliability-2" class="internal xref">Reliability</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.7">
+                    <p id="section-toc.1-1.4.2.2.2.7.1"><a href="#section-4.2.7" class="auto internal xref">4.2.7</a>.  <a href="#name-security-2" class="internal xref">Security</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.8">
+                    <p id="section-toc.1-1.4.2.2.2.8.1"><a href="#section-4.2.8" class="auto internal xref">4.2.8</a>.  <a href="#name-ipv6-forwarding-efficiency" class="internal xref">IPv6 Forwarding Efficiency</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.9">
+                    <p id="section-toc.1-1.4.2.2.2.9.1"><a href="#section-4.2.9" class="auto internal xref">4.2.9</a>.  <a href="#name-application-aware-ipv6-netw" class="internal xref">Application-aware IPv6 Networking</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">With the development of cloud computing, increasing services have
+been migrated from enterprises to cloud data centers. Compared with
+interconnections between branches and headquarters, new connections
+between enterprise sites to cloud data centers and inter-cloud are
+added, which bring new requirements and challenges for existing
+networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">When enterprises have workloads &amp; applications &amp; data split
+among different data centers, especially for those enterprises with
+multiple sites that are already interconnected by VPNs (e.g., MPLS
+L2VPN/L3VPN), challenges are introduced.
+<span>[<a href="#I-D.ietf-rtgwg-net2cloud-problem-statement" class="cite xref">I-D.ietf-rtgwg-net2cloud-problem-statement</a>]</span> describes the
+problems that enterprises face today when interconnecting their branch
+offices with dynamic workloads in third party data centers (a.k.a. Cloud
+DCs).<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">SD-WAN is a flexible WAN architecture that enables flexible
+network-to-cloud and inter-clouds connections. It supports to use
+alternative paths like internet or 4G / 5G connection instead of
+expensive MPLS leased lines to exchange data between sites and clouds.
+However, when a WAN path travels multiple MPLS domains, the
+configurations are complicated due to multiple services touch points
+need to be configured. Therefore, it is hard to support end-to-end path
+programming in IPv4/MPLS based SD-WAN.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">When using VXLAN in SD-WAN, only the overlay path or anchor points
+can be specified while the underlay forwarding path can not be
+specified. Therefore, strict TE requirements like deterministic delay,
+specified path forwarding can not be satisfied.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">In order to resolve these challenges, this document propose
+IPv6-based Cloud-Oriented Networking (CON). In addition, it describes
+the challenges for existing networks when clouds and networks are
+converged, requirements that IPv6-based CON should satisfy, and the
+solutions in IPv6-based CON that satisfy the requirements.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">IPv6-based CON supports quick and flexible connections between sites
+and clouds and inter-clouds, it also supports end-to-end path
+programming, which can be used for many use cases, such as strict path
+traffic engineering, deterministic delay forwarding, and service
+function chaining, to provide better network services for cloud-network
+and inter-cloud interconnections.<a href="#section-1-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="terminology">
+<section id="section-2">
+      <h2 id="name-terminology">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+      </h2>
+<p id="section-2-1">This document makes use of the terms defined in <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> and <span>[<a href="#RFC8200" class="cite xref">RFC8200</a>]</span>,
+and the reader is assumed to be familiar with that terminology.
+This document introduces the following terms:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">POP: Point of Presence<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">CON: Cloud-Oriented Networking.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">EC: Edge Computing.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<p id="section-2-5">EDC: Edge Data center<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">RDC: Regional Data Center<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-7">CDC: Core Data Center<a href="#section-2-7" class="pilcrow">¶</a></p>
+<div id="requirements-language">
+<section id="section-2.1">
+        <h3 id="name-requirements-language">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-requirements-language" class="section-name selfRef">Requirements Language</a>
+        </h3>
+<p id="section-2.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="problem-statement">
+<section id="section-3">
+      <h2 id="name-problem-statement">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-problem-statement" class="section-name selfRef">Problem Statement</a>
+      </h2>
+<p id="section-3-1">As development of cloud, many clouds have been deployed, such as
+Private cloud, Public Cloud, and Hybrid Cloud. The cloud services can be
+provided by a third party, such as an OTT (Over-The-Top) content
+provider, and it can be provided by a network operator as well.
+Furthermore, cloud can be deployed not only in IT data centers but also
+CT data centers.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">With the development and successful application of cloud native
+design in the IT field and Network Functions Virtualization (NFV)
+technologies, virtualization and cloudification have gradually matured
+and evolved to provide a new level of productivity, offering a new
+approach to telecom network construction. Building cloud-based telecom
+networks (also known as telco clouds) becomes a new way of telecom
+network construction.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">In order to support low latency communication, the request should be
+responded at the near cloud data center, therefore edge computing data
+center (a.k.a Edge Cloud) is introduced. Telecommunication services and
+third-party OTT services can be deployed in the edge cloud.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">As the deployment of clouds, the traffic pattern in the network has
+changed significantly, which results in new challenges for existing
+networks.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<div id="underlay">
+<section id="section-3.1">
+        <h3 id="name-underlay">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-underlay" class="section-name selfRef">Underlay</a>
+        </h3>
+<p id="section-3.1-1">From the aspect of underlay, cloud services requires the network to
+provide quick and flexible connection.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The typical topology of telco cloud is shown in figure 1.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.1-3">
+<pre>
+              +++++++        +++++++            ++++++
+              | EDC |        | RDC |            | CDC|
+              +++++++        +++++++            ++++++
+                 |   *********  |   ************  |
+                 |   *       *  |   *          *  |
+   OLT/CSG/CPE---PE--* Metro *--PE--* Backbone *--PE--IGW---Internet
+                     *       *      *          *
+                     *********      ************
+
+            Figure 1.Typical topology of telco cloud
+
+</pre><a href="#section-3.1-3" class="pilcrow">¶</a>
+</div>
+<p id="section-3.1-4">The edge cloud is deployed in edge data center (EDC) in the access
+network usually, so that the servers in the edge cloud can respond to
+the delay-sensitive requests rapidly, like 5G URLLC traffic. The
+traffic is not delay-sensitive can be responded in regional cloud DC,
+which is located in the metro or core network. Most cloud services may
+be deployed in the core cloud DC considering reducing the cost, which
+is far from the end user. Like, the UPF may locate in the regional
+cloud DC or Core cloud DC, so that it can support more users.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">The traffic from end users to cloud servers are forwarded along
+with different paths due to the different locations of the end users
+and the cloud servers.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">In addition, when deploying new services, for instance, deploying a
+leased line from an enterprise site to a cloud data center, it will
+take probably weeks in the current IPv4/MPLS carrier network. Because
+the VPN configuration is needed to be done at multiple PE nodes if the
+leased line travels multiple domains (when using Option A between
+domains). Also, the cloud operator needs to negotiate with network
+operators if the cloud services and the network services are provided
+by different operators. For example, thousands of chain stores such as
+grocery stores or super markets are needed to connect to their
+enterprise VPNs, and they may use the cloud services. However, in
+IPv4/MPLS network, it may take weeks to establish a new VPN connection
+from a site to headquarter or cloud tenant networks.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.1-7">Furthermore, different traffic of different enterprise/tenant/users
+are treated differently in clouds, and they <span class="bcp14">MAY</span> be forwarded along
+with different service function chains (SFC). However, it is hard to
+support SFC in IPv4 or MPLS based network in carrier's networks or
+data center networks. Normally, to support SFC, the traffic steering
+policies are configured at multiple nodes along the SFC path, which is
+complicated.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="overlay">
+<section id="section-3.2">
+        <h3 id="name-overlay">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-overlay" class="section-name selfRef">Overlay</a>
+        </h3>
+<p id="section-3.2-1">In order to provide quick and flexible cloud connection, overlay
+connection is provided by cloud providers, especially the OTT cloud
+providers.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">SD-WAN is a typical fabric for DCI connection between clouds and
+sites, which provides a cheaper and smarter WAN connection. Many
+SD-WAN providers builds their own WAN backbone network by connecting
+their POP GWs to provide better SLA assurance for tenants. The typical
+topology of SD-WAN with POP GWs is shown in figure 2.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.2-3">
+<pre>
+  Site CPE1--POP GW1 --------------------------POP GW2---Site CPE2
+                |                                 |
+                |          SD-WAN Backbone        |
+                |                                 |
+    Cloud1---POP GW3---------------------------POP GW4--Cloud2
+
+              Figure 2. Typical topology of SD-WAN
+
+</pre><a href="#section-3.2-3" class="pilcrow">¶</a>
+</div>
+<p id="section-3.2-4">Currently, the traffic from the CPE to POP GW is forwarded through
+the shortest forwarding path over the Internet, or an MPLS tunnel.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-5">In addition, traffic from POP GW to another POP GW can be forwarded
+along with the MPLS tunnel that is a leased line, or over the
+internet, depending on the forwarding policies.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+<p id="section-3.2-6">When the traffic is forwarded over the internet, it can be
+forwarded over a VXLAN tunnel. However, when using VXLAN, only the
+overlay connection is provided to enterprises/tenants, while the
+underlay forwarding path can not be specified and programmed.
+Therefore the SLA requirements can not be guaranteed when the traffic
+is forwarded overlay.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="ipv6-based-cloud-oriented-networking">
+<section id="section-4">
+      <h2 id="name-ipv6-based-cloud-oriented-n">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-ipv6-based-cloud-oriented-n" class="section-name selfRef">IPv6-based Cloud-Oriented Networking</a>
+      </h2>
+<p id="section-4-1">This document describes a networking architecture called IPv6-based
+Cloud-Oriented Networking (CON). IPv6-based CON is an IPv6-based
+networking which provide quick, flexible connection to support dynamic
+site to cloud, and inter-cloud connections. Also, it supports end-to-end
+underlay forwarding path programming, so that services like strict path
+TE and SFC can be supported better.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">The following section describes the requirements in IPv6-based CON,
+and the related solutions that meet the requirements.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<div id="requirements">
+<section id="section-4.1">
+        <h3 id="name-requirements">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
+        </h3>
+<p id="section-4.1-1">This section describes the overall requirements which need to be
+fulfilled by IPv6-based Cloud-Oriented Networking.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<div id="quick-connection">
+<section id="section-4.1.1">
+          <h4 id="name-quick-connection">
+<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-quick-connection" class="section-name selfRef">Quick Connection</a>
+          </h4>
+<p id="section-4.1.1-1">Enterprise sites can locate at any location around the world,
+they need to connect to the clouds or other sites in any time, from
+any where. Also, enterprises may have some Virtual Private Clouds
+(VPC) in different clouds, they need to connect to each other in
+real time as well. The servers may locate in different cloud data
+centers or enterprise sites, which provide services for employees or
+other users. Therefore quick connection is required in IPv6-based
+CON.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="hybrid-network-connection">
+<section id="section-4.1.2">
+          <h4 id="name-hybrid-network-connection">
+<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-hybrid-network-connection" class="section-name selfRef">Hybrid Network Connection</a>
+          </h4>
+<p id="section-4.1.2-1">The enterprise VPN traffic can be forwarded around the world,
+which may travel heterogeneous networks, such as IPv4, MPLS and
+IPv6.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-2">Typically, when a SD-WAN network connects multiple sites and
+clouds, it may cover hybrid networks. For example, the sub-path from
+the CPE to POP WG could be an IPv4 sub-path without any resource
+guarantee. The sub-path between POP GWs could be an MPLS LSP with
+resource reservation.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-3">Therefore, connection over hybrid networks <span class="bcp14">MUST</span> be supported in
+IPv6-based CON.<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="path-programming">
+<section id="section-4.1.3">
+          <h4 id="name-path-programming">
+<a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-path-programming" class="section-name selfRef">Path Programming</a>
+          </h4>
+<p id="section-4.1.3-1">When the enterprise VPN traffic is forwarded among sites or
+clouds, it may be forwarded along different paths. Each path has
+different performance such as different bandwidth, delay, etc. For
+instance, path A is the shortest path from site 1 to cloud 1, which
+has the lowest delay, while the path B can provide more bandwidth
+than path A. Therefore, the delay-sensitive traffic like PC gaming
+traffic <span class="bcp14">SHOULD</span> be forwarded along with path A, and the traffic that
+is delay-insensitive but requiring large bandwidth <span class="bcp14">SHOULD</span> be
+forwarded along with path B.<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.3-2">In order to meet the different SLA requirements, IPv6-based CON
+<span class="bcp14">MUST</span> support path programming.<a href="#section-4.1.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="resource-assurance">
+<section id="section-4.1.4">
+          <h4 id="name-resource-assurance">
+<a href="#section-4.1.4" class="section-number selfRef">4.1.4. </a><a href="#name-resource-assurance" class="section-name selfRef">Resource Assurance</a>
+          </h4>
+<p id="section-4.1.4-1">In RSVP-TE MPLS, resources like bandwidth can be reserved for an
+LSP. When the traffic is forwarded along the LSP, the bandwidth can
+be guaranteed, which makes sure that the traffic will not be
+affected by other traffic. In order to provide SLA guaranteed
+services, IPv6-based CON <span class="bcp14">MUST</span> support Resource Assurance.<a href="#section-4.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.4-2">Network slicing is an approach to provide separate and
+independent end-to-end logical network over the physical network
+infrastructure. Each Network Slicing has its own resources, which
+can meet the specific SLA requirements. In order to provide SLA
+guaranteed services, IPv6-based CON <span class="bcp14">MUST</span> support network
+slicing.<a href="#section-4.1.4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="deterministic-delay">
+<section id="section-4.1.5">
+          <h4 id="name-deterministic-delay">
+<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-deterministic-delay" class="section-name selfRef">Deterministic Delay</a>
+          </h4>
+<p id="section-4.1.5-1">Delay-sensitive traffic has the strict requirements of network
+delay. Especially, when the servers moved to clouds instead of
+locating locally within the enterprise site, the long physical
+distance of packet forwarding path will introduce larger delay. In
+the traditional network, the shortest forwarding path is calculated
+based on the metric, and the metric is usually associated to the
+physical hops instead of latency. However, minimum delay forwarding
+is required for delay-sensitive traffic, like real-time video
+broadcast and video meeting.<a href="#section-4.1.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.5-2">Therefore, IPv6-based CON <span class="bcp14">MUST</span> have the capability to support
+path computing based on delay. Also, it <span class="bcp14">MUST</span> be able to provide
+deterministic delay forwarding.<a href="#section-4.1.5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="service-function-chaining">
+<section id="section-4.1.6">
+          <h4 id="name-service-function-chaining">
+<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-service-function-chaining" class="section-name selfRef">Service Function Chaining</a>
+          </h4>
+<p id="section-4.1.6-1">Service Function Chaining <span>[<a href="#RFC7665" class="cite xref">RFC7665</a>]</span> is a mechanism
+to provide different value-added services (VAS) for packets.<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.6-2">A service function chain defines an ordered set of abstract
+service functions and ordering constraints that must be applied to
+packets and/or frames and/or flows selected as a result of
+classification <span>[<a href="#RFC7665" class="cite xref">RFC7665</a>]</span>.<a href="#section-4.1.6-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.6-3">An example of an abstract service function is "a firewall".
+Typically, different tenant's traffic in cloud data center will
+traverse different services function chain containing Firewall, DPI
+or other VAS.<a href="#section-4.1.6-3" class="pilcrow">¶</a></p>
+<p id="section-4.1.6-4">Therefore, IPv6-based CON <span class="bcp14">MUST</span> have the capability to support
+SFC.<a href="#section-4.1.6-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="performance-measurement">
+<section id="section-4.1.7">
+          <h4 id="name-performance-measurement">
+<a href="#section-4.1.7" class="section-number selfRef">4.1.7. </a><a href="#name-performance-measurement" class="section-name selfRef">Performance Measurement</a>
+          </h4>
+<p id="section-4.1.7-1">Many OAM mechanisms are used to support network operation.
+Performance Measurement (PM) is one of the most important part of
+OAM. With PM, the real-time QoS of the forwarding path, like delay,
+packet loss ratio and throughput, can be measured.<a href="#section-4.1.7-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.7-2">PM can be implemented in one of three ways: active, passive, or
+hybrid <span>[<a href="#RFC7799" class="cite xref">RFC7799</a>]</span>, differing in whether OAM packets
+need to be proactively sent.<a href="#section-4.1.7-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.7-3">On-path telemetry <span>[<a href="#I-D.song-opsawg-ifit-framework" class="cite xref">I-D.song-opsawg-ifit-framework</a>]</span> is an hybrid mode
+OAM/PM mechanism, which provides better accuracy than active PM.
+Therefore, on-path Performance Measurement <span class="bcp14">MUST</span> be supported in
+IPv6-based CON.<a href="#section-4.1.7-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="reliability">
+<section id="section-4.1.8">
+          <h4 id="name-reliability">
+<a href="#section-4.1.8" class="section-number selfRef">4.1.8. </a><a href="#name-reliability" class="section-name selfRef">Reliability</a>
+          </h4>
+<p id="section-4.1.8-1">In Cloud-Network Interconnection scenarios, the enterprise
+traffic is forwarded over the WAN paths. The traffic can be
+sensitive to delay or packet losing, so high reliability is required
+in these scenarios. Therefore, protection of node and links <span class="bcp14">MUST</span> be
+supported in IPv6-based CON. Furthermore, redundancy transmission
+<span class="bcp14">SHOULD</span> be supported.<a href="#section-4.1.8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security">
+<section id="section-4.1.9">
+          <h4 id="name-security">
+<a href="#section-4.1.9" class="section-number selfRef">4.1.9. </a><a href="#name-security" class="section-name selfRef">Security</a>
+          </h4>
+<p id="section-4.1.9-1">As mentioned above, the enterprise traffic is forwarded over the
+WAN paths in IPv6-based CON. The security of the traffic <span class="bcp14">MUST</span> be
+ensured.<a href="#section-4.1.9-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-2">Also, in SD-WAN scenarios, customers are most concerned about
+security.<a href="#section-4.1.9-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.9-3">Therefore, IPv6-based CON <span class="bcp14">MUST</span> support secure connection, and
+<span class="bcp14">MUST</span> provide security assurance for the traffic in transmission.<a href="#section-4.1.9-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="forwarding-efficiency">
+<section id="section-4.1.10">
+          <h4 id="name-forwarding-efficiency">
+<a href="#section-4.1.10" class="section-number selfRef">4.1.10. </a><a href="#name-forwarding-efficiency" class="section-name selfRef">Forwarding Efficiency</a>
+          </h4>
+<p id="section-4.1.10-1">Tenants/Customers rent the physical or logical WAN links/paths
+from network operators for building they cloud-network
+interconnection enterprise network, so the forwarding efficiency is
+important for the WAN path tenant.<a href="#section-4.1.10-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.10-2">Path Maximum Transmission Unit indicates the maximum size of a
+packet that it can be forwarded along a path. Setting an appropriate
+PMTU for packets can avoid fragmentation or dropping, so that the
+forwarding efficiency can be raised.<a href="#section-4.1.10-2" class="pilcrow">¶</a></p>
+<p id="section-4.1.10-3">Also, the overhead of packets <span class="bcp14">MUST</span> be added very carefully since
+it affects the forwarding efficiency directly. Especially, when many
+SIDs are inserted in an SRv6 packet, the overhead of the SID list is
+too large. <span>[<a href="#I-D.srcompdt-spring-compression-requirement" class="cite xref">I-D.srcompdt-spring-compression-requirement</a>]</span> describes the
+requirements of SRv6 compression.<a href="#section-4.1.10-3" class="pilcrow">¶</a></p>
+<p id="section-4.1.10-4">Therefore, the IPv6-based CON <span class="bcp14">MUST</span> support PMTU probing and
+configuration. In addition, it <span class="bcp14">MUST</span> support SRv6 compression.<a href="#section-4.1.10-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="application-aware-networking">
+<section id="section-4.1.11">
+          <h4 id="name-application-aware-networkin">
+<a href="#section-4.1.11" class="section-number selfRef">4.1.11. </a><a href="#name-application-aware-networkin" class="section-name selfRef">Application-Aware Networking</a>
+          </h4>
+<p id="section-4.1.11-1">Network operators are typically unaware of which applications are
+traversing their networks, which is because the network layer is
+decoupled from application layer. Adding application knowledge to
+the network layer enables finer granularity requirements of
+applications to be specified to the network operator. As IPv6 is
+being widely deployed, the programmability provided by IPv6
+encapsulations can be augmented by conveying application
+information.<a href="#section-4.1.11-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.11-2">In IPv6-based CON, many types of applications' traffic is
+exchanged between sites and clouds. They have various requirements
+of QoS, and should be treated differently. In order to provide finer
+granularity traffic engineering to reduce the cost of WAN services,
+application-aware networking <span class="bcp14">SHOULD</span> be supported in IPv6-based
+CON.<a href="#section-4.1.11-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="solutions">
+<section id="section-4.2">
+        <h3 id="name-solutions">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-solutions" class="section-name selfRef">Solutions</a>
+        </h3>
+<p id="section-4.2-1">This section describes the candidate solutions that meet the
+requirements in IPv6-based CON.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<div id="vpn">
+<section id="section-4.2.1">
+          <h4 id="name-vpn">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-vpn" class="section-name selfRef">VPN</a>
+          </h4>
+<p id="section-4.2.1-1">VPN is a basic and essential services for cloud-networks
+interconnections.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-2">SRv6 supports VPN by encoding the VPN information into the VPN
+SID <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span>.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-3">Based on IPv6, SRv6 VPN can be established across multiple
+domains. It avoids configuring VPN services at each boundary nodes
+at each domain like the way in IPv4/MPLS networks (Option A).
+Deploying VPN based on SRv6 can shorten the duration
+significantly.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-4">Also, L2VPN and L3VPN can be supported uniformly based on EVPN
+control plane <span>[<a href="#RFC9252" class="cite xref">RFC9252</a>]</span>.
+Therefore, combining the SRv6 data plane and EVPN control plane, the
+VPN can be deployed in an easy and flexible way in IPv6-based
+CON.<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="path-programming-1">
+<section id="section-4.2.2">
+          <h4 id="name-path-programming-2">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-path-programming-2" class="section-name selfRef">Path Programming</a>
+          </h4>
+<p id="section-4.2.2-1">Based on SRv6, the traffic forwarding path can be programmed at
+the ingress of the SRv6 domain, so that the traffic from sites to
+clouds or inter-cloud can be forwarded through the specific underlay
+path.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-2">For instance, in SD-WAN scenarios, the POP GW can choose a
+specific underlay forwarding path in WAN by choosing a binding SID
+<span>[<a href="#I-D.dukes-spring-sr-for-sdwan" class="cite xref">I-D.dukes-spring-sr-for-sdwan</a>]</span>.
+If the CPE supports SRv6, a controller can convey the programmed path
+information to the CPE via BGP SRv6 policy
+<span>[<a href="#I-D.ietf-idr-segment-routing-te-policy" class="cite xref">I-D.ietf-idr-segment-routing-te-policy</a>]</span> or PCEP SRv6 policy
+<span>[<a href="#I-D.ietf-pce-segment-routing-policy-cp" class="cite xref">I-D.ietf-pce-segment-routing-policy-cp</a>]</span>.<a href="#section-4.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-3">If the WAN connection travels multiple domains, the WAN path can
+be connected by multiple tunnels, such as VXLAN, GRE tunnel.
+<span>[<a href="#I-D.dunbar-sr-sdwan-over-hybrid-networks" class="cite xref">I-D.dunbar-sr-sdwan-over-hybrid-networks</a>]</span> describes how to associated
+the tunnels.<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-4">In order to shorten the delay, a CPE or PE can choose the nearest
+server in a specific cloud, and forward the packets through
+programmed paths.<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="service-function-chaining-1">
+<section id="section-4.2.3">
+          <h4 id="name-service-function-chaining-2">
+<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-service-function-chaining-2" class="section-name selfRef">Service Function Chaining</a>
+          </h4>
+<p id="section-4.2.3-1">SFC is required in IPv6-based CON since different tenants
+subscribe different value-added services.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-2"><span>[<a href="#I-D.ietf-spring-sr-service-programming" class="cite xref">I-D.ietf-spring-sr-service-programming</a>]</span> defines
+the mechanism to support SFC in SRv6. Each service function (SF) can
+be represented as an SRv6 SID if it supports SRv6. If the SF is
+SRv6-unaware device, then proxy SID is used. By programming service
+SIDs into the SRH, the SFC can be supported in SRv6.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-3">Thanks to IPv6 reachability, SRv6 supports to program the
+end-to-end forwarding path from the carrier network to the inside
+the cloud data center, even to multiple clouds.<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-4">If NSH-based SFC has been deployed, a transition solution should
+be considered, and <span>[<a href="#I-D.ietf-spring-nsh-sr" class="cite xref">I-D.ietf-spring-nsh-sr</a>]</span> describes
+a NSH and SR integration SFC solution.<a href="#section-4.2.3-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ipv6-based-network-slicing">
+<section id="section-4.2.4">
+          <h4 id="name-ipv6-based-network-slicing">
+<a href="#section-4.2.4" class="section-number selfRef">4.2.4. </a><a href="#name-ipv6-based-network-slicing" class="section-name selfRef">IPv6 based Network Slicing</a>
+          </h4>
+<p id="section-4.2.4-1">The tenant traffic <span class="bcp14">MUST</span> be isolated in WAN to avoid affecting by
+other internet traffic.<a href="#section-4.2.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.4-2">A framework, Enhanced VPN (VPN+), to form an enhanced
+connectivity services between customer sites is defined as per
+<span>[<a href="#I-D.ietf-teas-enhanced-vpn" class="cite xref">I-D.ietf-teas-enhanced-vpn</a>]</span>. Typically, VPN+ will be used
+to form the underpinning of network slicing. It also defines Virtual
+Transport Network (VTN). A VTN is a virtual underlay network that
+connects customer edge points with the capability of providing the
+isolation and performance characteristics required by an enhanced
+VPN customer. A VTN usually has a customized topology and a set of
+dedicated or shared network resources <span>[<a href="#I-D.ietf-teas-enhanced-vpn" class="cite xref">I-D.ietf-teas-enhanced-vpn</a>]</span>.<a href="#section-4.2.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.4-3">A VTN-ID option in IPv6 HBH header is defined in
+<span>[<a href="#I-D.dong-6man-enhanced-vpn-vtn-id" class="cite xref">I-D.dong-6man-enhanced-vpn-vtn-id</a>]</span> to identify the Virtual
+Transport Network (VTN) the packet belongs to. A VTN can be used as
+the underlay for one or a group of VPNs to provide enhanced VPN
+(VPN+) services.<a href="#section-4.2.4-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.4-4">By using VTN-ID, an end-to-end IPv6 network slicing is identified
+in transport network. Tenant traffic in WAN can be forwarded in the
+VTN with guaranteed resource.<a href="#section-4.2.4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ipv6-based-on-path-measurement">
+<section id="section-4.2.5">
+          <h4 id="name-ipv6-based-on-path-measurem">
+<a href="#section-4.2.5" class="section-number selfRef">4.2.5. </a><a href="#name-ipv6-based-on-path-measurem" class="section-name selfRef">IPv6-based On-path Measurement</a>
+          </h4>
+<p id="section-4.2.5-1">The extension of supporting Alternate Marking Method <span>[<a href="#RFC9341" class="cite xref">RFC9341</a>]</span> in IPv6
+is defined in <span>[<a href="#RFC9343" class="cite xref">RFC9343</a>]</span>. It describes how the
+Alternate Marking Method to be used as the hybrid performance
+measurement tool in an IPv6 domain by defining a new Extension
+Header Option.<a href="#section-4.2.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.5-2">Alternate Marking Method is a hybrid on-path performance
+measurement method, and the metadata of each node can be collected
+by the collector to compute the performance of the path.<a href="#section-4.2.5-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.5-3">IOAM is another on-path measurement method.
+<span>[<a href="#I-D.ietf-ippm-ioam-ipv6-options" class="cite xref">I-D.ietf-ippm-ioam-ipv6-options</a>]</span> defines a new IPv6
+option, called IOAM option to support carrying IOAM metadata in the
+IPv6 data packet. However, carrying all the metadata in the data
+packet will bring challenges for hardware processing. For instance,
+long-length metadata may cause recircle in processing. Therefore,
+<span>[<a href="#RFC9326" class="cite xref">RFC9326</a>]</span> defines a direct
+export option in IOAM, which enables the nodes to export the
+metadata to collector directly. Furthermore,
+<span>[<a href="#I-D.song-opsawg-ifit-framework" class="cite xref">I-D.song-opsawg-ifit-framework</a>]</span> outlines a high-level
+framework to provide an operational environment that utilizes
+existing and emerging on-path telemetry techniques to enable the
+collection and correlation of performance information from the
+network.<a href="#section-4.2.5-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="reliability-1">
+<section id="section-4.2.6">
+          <h4 id="name-reliability-2">
+<a href="#section-4.2.6" class="section-number selfRef">4.2.6. </a><a href="#name-reliability-2" class="section-name selfRef">Reliability</a>
+          </h4>
+<div id="local-protection">
+<section id="section-4.2.6.1">
+            <h5 id="name-local-protection">
+<a href="#section-4.2.6.1" class="section-number selfRef">4.2.6.1. </a><a href="#name-local-protection" class="section-name selfRef">Local Protection</a>
+            </h5>
+<p id="section-4.2.6.1-1">Local protection mechanisms like Fast Reroute (FRR) provide 50
+ms protection on nodes for traffic.<a href="#section-4.2.6.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.6.1-2">Regarding link failures, TI-LFA <span>[<a href="#I-D.ietf-rtgwg-segment-routing-ti-lfa" class="cite xref">I-D.ietf-rtgwg-segment-routing-ti-lfa</a>]</span>
+provides a fast
+reroute mechanism by sending the traffic to an expected
+post-convergence paths from the point of local repair.<a href="#section-4.2.6.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.6.1-3">Regarding the middle endpoint node failures,
+<span>[<a href="#I-D.hu-spring-segment-routing-proxy-forwarding" class="cite xref">I-D.hu-spring-segment-routing-proxy-forwarding</a>]</span> defines
+a mechanism for fast reroute protection against the failure of a
+SR-TE path. It can provide fast reroute protection for an
+adjacency segment, a node segment and a binding segment of the
+path. Also, <span>[<a href="#I-D.chen-rtgwg-srv6-midpoint-protection" class="cite xref">I-D.chen-rtgwg-srv6-midpoint-protection</a>]</span> defines
+midpoint protection, which enables the direct neighbor of the
+failed endpoint to perform the function of the endpoint, replace
+the IPv6 destination address to the next endpoint, and choose the
+next hop based on the new destination address.<a href="#section-4.2.6.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.6.1-4">Regarding the egress node failures,
+<span>[<a href="#I-D.ietf-rtgwg-srv6-egress-protection" class="cite xref">I-D.ietf-rtgwg-srv6-egress-protection</a>]</span> defines a local
+protection solution using the mirror SID.<a href="#section-4.2.6.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="end-to-end-protection">
+<section id="section-4.2.6.2">
+            <h5 id="name-end-to-end-protection">
+<a href="#section-4.2.6.2" class="section-number selfRef">4.2.6.2. </a><a href="#name-end-to-end-protection" class="section-name selfRef">End-to-End Protection</a>
+            </h5>
+<p id="section-4.2.6.2-1">End-to-End Protection is also required in IPv6-based CON.
+Normally, host-standby nodes are deployed for supporting traffic
+switching from the failed node to the alternative node. In order
+to detect the failure, End-to-end BFD is required. Once the BFD
+session is failed, the traffic can be steered into a disjoint
+forwarding path, and the traffic will be forwarded to the
+host-standby node.<a href="#section-4.2.6.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="redundancy-protection">
+<section id="section-4.2.6.3">
+            <h5 id="name-redundancy-protection">
+<a href="#section-4.2.6.3" class="section-number selfRef">4.2.6.3. </a><a href="#name-redundancy-protection" class="section-name selfRef">Redundancy Protection</a>
+            </h5>
+<p id="section-4.2.6.3-1">In order to avoid losing packets,
+<span>[<a href="#I-D.geng-spring-sr-redundancy-protection" class="cite xref">I-D.geng-spring-sr-redundancy-protection</a>]</span> defines a
+redundancy transmission solution.<a href="#section-4.2.6.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.6.3-2">The document defines two types of segment including Redundancy
+Segment and Merging Segment to empower the Segment Routing with
+the capability of redundancy protection.<a href="#section-4.2.6.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="security-1">
+<section id="section-4.2.7">
+          <h4 id="name-security-2">
+<a href="#section-4.2.7" class="section-number selfRef">4.2.7. </a><a href="#name-security-2" class="section-name selfRef">Security</a>
+          </h4>
+<p id="section-4.2.7-1">As per <span>[<a href="#I-D.li-spring-srv6-security-consideration" class="cite xref">I-D.li-spring-srv6-security-consideration</a>]</span>, SRv6 inherits
+potential security vulnerabilities from Source Routing and IPv6, but
+it does not introduce new critical security threats.<a href="#section-4.2.7-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.7-2">Regarding a limited domain, SPRING architecture <span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span> defines clear
+trusted domain boundaries so that
+source-routing information is only available within the trusted
+domain and never exposed to the outside of the domain. It is
+expected that, by default, explicit routing is only used within the
+boundaries of the administered domain. Therefore, the data plane
+does not expose any source-routing information when a packet leaves
+the trusted domain. The traffic is filtered at the domain boundaries
+<span>[<a href="#RFC8402" class="cite xref">RFC8402</a>]</span>.<a href="#section-4.2.7-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.7-3">However, it has been noted that the AH and ESP are not directly
+applicable in order to reduce the vulnerabilities of SRv6 due to the
+presence of mutable fields in the SRH
+<span>[<a href="#I-D.li-spring-srv6-security-consideration" class="cite xref">I-D.li-spring-srv6-security-consideration</a>]</span>. In order to
+resolve this problem, <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> defines a mechanism
+to carry HMAC TLV in the SRH to verify the integrity of packets
+including the SRH fields.<a href="#section-4.2.7-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.7-4">Regarding end-to-end security protection across multiple domains,
+an end-to-end IPSec tunnel is suggested to be deployed.<a href="#section-4.2.7-4" class="pilcrow">¶</a></p>
+<p id="section-4.2.7-5">In typical SD-WAN scenarios, the IPSec tunnel should be used
+between the CPE and POP GW.<a href="#section-4.2.7-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="ipv6-forwarding-efficiency">
+<section id="section-4.2.8">
+          <h4 id="name-ipv6-forwarding-efficiency">
+<a href="#section-4.2.8" class="section-number selfRef">4.2.8. </a><a href="#name-ipv6-forwarding-efficiency" class="section-name selfRef">IPv6 Forwarding Efficiency</a>
+          </h4>
+<div id="pmtu">
+<section id="section-4.2.8.1">
+            <h5 id="name-pmtu">
+<a href="#section-4.2.8.1" class="section-number selfRef">4.2.8.1. </a><a href="#name-pmtu" class="section-name selfRef">PMTU</a>
+            </h5>
+<p id="section-4.2.8.1-1">The host may discover the PMTU by Path MTU Discovery (PMTUD) <span>[<a href="#RFC8201" class="cite xref">RFC8201</a>]</span>
+or other means. But the ingress node
+still needs to examine the packet size to drop too large packets
+to avoid malicious packets or error packets attack. Also, the
+packet size may exceed the PMTU because of the new encapsulation
+of SR-MPLS or SRv6 at the ingress. In order to check whether the
+packet size exceeds the PMTU or not, the ingress node need to know
+the Path MTU associated to the forwarding path.<a href="#section-4.2.8.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.8.1-2">However, the path maximum transmission unit (MTU) information
+for SR path is not available since the SR does not require
+signaling. <span>[<a href="#I-D.ietf-idr-bgp-ls-link-mtu" class="cite xref">I-D.ietf-idr-bgp-ls-link-mtu</a>]</span> proposes
+a BGP-LS extensions to collect the link MTU of the links in the
+networks. <span>[<a href="#I-D.ietf-idr-sr-policy-path-mtu" class="cite xref">I-D.ietf-idr-sr-policy-path-mtu</a>]</span> and <span>[<a href="#I-D.li-pce-pcep-pmtu" class="cite xref">I-D.li-pce-pcep-pmtu</a>]</span>
+defines extensions to
+distribute path MTU information within BGP and PCEP SR policies,
+respectively. In this way, the controller can compute the
+appropriate PMTU for an SR path.<a href="#section-4.2.8.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="srv6-compression">
+<section id="section-4.2.8.2">
+            <h5 id="name-srv6-compression">
+<a href="#section-4.2.8.2" class="section-number selfRef">4.2.8.2. </a><a href="#name-srv6-compression" class="section-name selfRef">SRv6 Compression</a>
+            </h5>
+<p id="section-4.2.8.2-1">The overhead of SRv6 encapsulation brings challenges for
+hardware processing and transmission.
+<span>[<a href="#I-D.srcompdt-spring-compression-requirement" class="cite xref">I-D.srcompdt-spring-compression-requirement</a>]</span> describes
+the requirements of SRv6 compression.<a href="#section-4.2.8.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.8.2-2">G-SRv6 is proposed in <span>[<a href="#I-D.cl-spring-generalized-srv6-np" class="cite xref">I-D.cl-spring-generalized-srv6-np</a>]</span>, which
+supports to encode multiple types of SIDs in SRH. This SRH is called
+Generalized SRH <span>[<a href="#I-D.lc-6man-generalized-srh" class="cite xref">I-D.lc-6man-generalized-srh</a>]</span> while
+the SID is called Generalized SID.<a href="#section-4.2.8.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.8.2-3">G-SRv6 supports to encode the compressed SIDs in the SRH to
+reduce the size of SRv6 SID list in SRH
+<span>[<a href="#I-D.cl-spring-generalized-srv6-for-cmpr" class="cite xref">I-D.cl-spring-generalized-srv6-for-cmpr</a>]</span>. A COC
+(Continuation of Compression) flavor is defined to indicate the
+continuation of SRv6 compressed SIDs in the SID list.<a href="#section-4.2.8.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="application-aware-ipv6-networking">
+<section id="section-4.2.9">
+          <h4 id="name-application-aware-ipv6-netw">
+<a href="#section-4.2.9" class="section-number selfRef">4.2.9. </a><a href="#name-application-aware-ipv6-netw" class="section-name selfRef">Application-aware IPv6 Networking</a>
+          </h4>
+<p id="section-4.2.9-1">Application-aware Networking (APN) is proposed by
+<span>[<a href="#I-D.li-apn-framework" class="cite xref">I-D.li-apn-framework</a>]</span>, where application characteristic
+information such as application identification and its network
+performance requirements is carried in the packet encapsulation in
+order to facilitate service provisioning, perform application-level
+traffic steering and network resource adjustment.<a href="#section-4.2.9-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.9-2">Application-aware IPv6 Networking (APN6) framework makes use of
+IPv6 encapsulation in order to convey the application-aware
+information along with the data packet to the network so to
+facilitate the service deployment and SLA
+guarantee. <span>[<a href="#I-D.li-6man-app-aware-ipv6-network" class="cite xref">I-D.li-6man-app-aware-ipv6-network</a>]</span> defines the encodings
+of the application characteristic information, for the APN6
+framework, that can be exchanged between an application and the
+network infrastructure through IPv6 extension headers.<a href="#section-4.2.9-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="IANA">
+<section id="section-5">
+      <h2 id="name-iana-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-5-1">TBD<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="Security">
+<section id="section-6">
+      <h2 id="name-security-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-6-1">TBD<a href="#section-6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-7">
+      <h2 id="name-references">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-7.1">
+        <h3 id="name-normative-references">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+        <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8200">[RFC8200]</dt>
+        <dd>
+<span class="refAuthor">Deering, S.</span> and <span class="refAuthor">R. Hinden</span>, <span class="refTitle">"Internet Protocol, Version 6 (IPv6) Specification"</span>, <span class="seriesInfo">STD 86</span>, <span class="seriesInfo">RFC 8200</span>, <span class="seriesInfo">DOI 10.17487/RFC8200</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8200">https://www.rfc-editor.org/rfc/rfc8200</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8402">[RFC8402]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Ginsberg, L.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Litkowski, S.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Segment Routing Architecture"</span>, <span class="seriesInfo">RFC 8402</span>, <span class="seriesInfo">DOI 10.17487/RFC8402</span>, <time datetime="2018-07" class="refDate">July 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8402">https://www.rfc-editor.org/rfc/rfc8402</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8754">[RFC8754]</dt>
+      <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Dukes, D., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">D. Voyer</span>, <span class="refTitle">"IPv6 Segment Routing Header (SRH)"</span>, <span class="seriesInfo">RFC 8754</span>, <span class="seriesInfo">DOI 10.17487/RFC8754</span>, <time datetime="2020-03" class="refDate">March 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8754">https://www.rfc-editor.org/rfc/rfc8754</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-7.2">
+        <h3 id="name-informative-references">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.chen-rtgwg-srv6-midpoint-protection">[I-D.chen-rtgwg-srv6-midpoint-protection]</dt>
+        <dd>
+<span class="refAuthor">Chen, H.</span>, <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Chen, H.</span>, <span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Liu, Y.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"SRv6 Midpoint Protection"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-chen-rtgwg-srv6-midpoint-protection-12</span>, <time datetime="2023-08-12" class="refDate">12 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-chen-rtgwg-srv6-midpoint-protection-12">https://datatracker.ietf.org/doc/html/draft-chen-rtgwg-srv6-midpoint-protection-12</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.cl-spring-generalized-srv6-for-cmpr">[I-D.cl-spring-generalized-srv6-for-cmpr]</dt>
+        <dd>
+<span class="refAuthor">Cheng, W.</span>, <span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Clad, F.</span>, <span class="refAuthor">Liu, A.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Liu, Y.</span>, and <span class="refAuthor">S. Zadok</span>, <span class="refTitle">"Generalized SRv6 Network Programming for SRv6 Compression"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cl-spring-generalized-srv6-for-cmpr-07</span>, <time datetime="2023-05-04" class="refDate">4 May 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cl-spring-generalized-srv6-for-cmpr-07">https://datatracker.ietf.org/doc/html/draft-cl-spring-generalized-srv6-for-cmpr-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.cl-spring-generalized-srv6-np">[I-D.cl-spring-generalized-srv6-np]</dt>
+        <dd>
+<span class="refAuthor">Cheng, W.</span>, <span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Tian, H.</span>, and <span class="refAuthor">F. Zhao</span>, <span class="refTitle">"Generalized SRv6 Network Programming"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cl-spring-generalized-srv6-np-03</span>, <time datetime="2021-03-14" class="refDate">14 March 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cl-spring-generalized-srv6-np-03">https://datatracker.ietf.org/doc/html/draft-cl-spring-generalized-srv6-np-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.dong-6man-enhanced-vpn-vtn-id">[I-D.dong-6man-enhanced-vpn-vtn-id]</dt>
+        <dd>
+<span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Ma, C.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"Carrying Virtual Transport Network (VTN) Identifier in IPv6 Extension Header"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dong-6man-enhanced-vpn-vtn-id-06</span>, <time datetime="2021-10-24" class="refDate">24 October 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dong-6man-enhanced-vpn-vtn-id-06">https://datatracker.ietf.org/doc/html/draft-dong-6man-enhanced-vpn-vtn-id-06</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.dukes-spring-sr-for-sdwan">[I-D.dukes-spring-sr-for-sdwan]</dt>
+        <dd>
+<span class="refAuthor">Dukes, D.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Dawra, G.</span>, <span class="refAuthor">Xu, X.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Camarillo, P.</span>, <span class="refAuthor">Clad, F.</span>, and <span class="refAuthor">S. Salsano</span>, <span class="refTitle">"SR For SDWAN: VPN with Underlay SLA"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dukes-spring-sr-for-sdwan-03</span>, <time datetime="2021-02-22" class="refDate">22 February 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dukes-spring-sr-for-sdwan-03">https://datatracker.ietf.org/doc/html/draft-dukes-spring-sr-for-sdwan-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.dunbar-sr-sdwan-over-hybrid-networks">[I-D.dunbar-sr-sdwan-over-hybrid-networks]</dt>
+        <dd>
+<span class="refAuthor">Dunbar, L.</span> and <span class="refAuthor">M. Toy</span>, <span class="refTitle">"SRv6 across SDWAN paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-dunbar-sr-sdwan-over-hybrid-networks-07</span>, <time datetime="2021-05-18" class="refDate">18 May 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-dunbar-sr-sdwan-over-hybrid-networks-07">https://datatracker.ietf.org/doc/html/draft-dunbar-sr-sdwan-over-hybrid-networks-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.geng-spring-sr-redundancy-protection">[I-D.geng-spring-sr-redundancy-protection]</dt>
+        <dd>
+<span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Chen, M.</span>, <span class="refAuthor">Yang, F.</span>, <span class="refAuthor">Camarillo, P.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"SRv6 for Redundancy Protection"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-geng-spring-sr-redundancy-protection-05</span>, <time datetime="2021-08-02" class="refDate">2 August 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-geng-spring-sr-redundancy-protection-05">https://datatracker.ietf.org/doc/html/draft-geng-spring-sr-redundancy-protection-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.hu-spring-segment-routing-proxy-forwarding">[I-D.hu-spring-segment-routing-proxy-forwarding]</dt>
+        <dd>
+<span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Chen, H.</span>, <span class="refAuthor">Yao, J.</span>, <span class="refAuthor">Bowers, C.</span>, <span class="refAuthor">Zhu, Y.</span>, and <span class="refAuthor">Y. Liu</span>, <span class="refTitle">"SR-TE Path Midpoint Restoration"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-hu-spring-segment-routing-proxy-forwarding-24</span>, <time datetime="2023-08-21" class="refDate">21 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-hu-spring-segment-routing-proxy-forwarding-24">https://datatracker.ietf.org/doc/html/draft-hu-spring-segment-routing-proxy-forwarding-24</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-idr-bgp-ls-link-mtu">[I-D.ietf-idr-bgp-ls-link-mtu]</dt>
+        <dd>
+<span class="refAuthor">Zhu, Y.</span>, <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Peng, S.</span>, and <span class="refAuthor">R. Mwehair</span>, <span class="refTitle">"Signaling Maximum Transmission Unit (MTU) using BGP-LS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-idr-bgp-ls-link-mtu-05</span>, <time datetime="2023-07-26" class="refDate">26 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-ls-link-mtu-05">https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-ls-link-mtu-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-idr-segment-routing-te-policy">[I-D.ietf-idr-segment-routing-te-policy]</dt>
+        <dd>
+<span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Talaulikar, K.</span>, <span class="refAuthor">Mattes, P.</span>, and <span class="refAuthor">D. Jain</span>, <span class="refTitle">"Advertising Segment Routing Policies in BGP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-idr-segment-routing-te-policy-23</span>, <time datetime="2023-07-25" class="refDate">25 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-idr-segment-routing-te-policy-23">https://datatracker.ietf.org/doc/html/draft-ietf-idr-segment-routing-te-policy-23</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-idr-sr-policy-path-mtu">[I-D.ietf-idr-sr-policy-path-mtu]</dt>
+        <dd>
+<span class="refAuthor">Li, C.</span>, <span class="refAuthor">Zhu, Y.</span>, <span class="refAuthor">El Sawaf, A.</span>, and <span class="refAuthor">Z. Li</span>, <span class="refTitle">"Segment Routing Path MTU in BGP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-idr-sr-policy-path-mtu-07</span>, <time datetime="2023-05-04" class="refDate">4 May 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-idr-sr-policy-path-mtu-07">https://datatracker.ietf.org/doc/html/draft-ietf-idr-sr-policy-path-mtu-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-ippm-ioam-ipv6-options">[I-D.ietf-ippm-ioam-ipv6-options]</dt>
+        <dd>
+<span class="refAuthor">Bhandari, S.</span> and <span class="refAuthor">F. Brockners</span>, <span class="refTitle">"In-situ OAM IPv6 Options"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ippm-ioam-ipv6-options-12</span>, <time datetime="2023-05-07" class="refDate">7 May 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ippm-ioam-ipv6-options-12">https://datatracker.ietf.org/doc/html/draft-ietf-ippm-ioam-ipv6-options-12</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-pce-segment-routing-policy-cp">[I-D.ietf-pce-segment-routing-policy-cp]</dt>
+        <dd>
+<span class="refAuthor">Koldychev, M.</span>, <span class="refAuthor">Sivabalan, S.</span>, <span class="refAuthor">Barth, C.</span>, <span class="refAuthor">Peng, S.</span>, and <span class="refAuthor">H. Bidgoli</span>, <span class="refTitle">"PCEP extension to support Segment Routing Policy Candidate Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-pce-segment-routing-policy-cp-12</span>, <time datetime="2023-07-24" class="refDate">24 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-pce-segment-routing-policy-cp-12">https://datatracker.ietf.org/doc/html/draft-ietf-pce-segment-routing-policy-cp-12</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-rtgwg-net2cloud-problem-statement">[I-D.ietf-rtgwg-net2cloud-problem-statement]</dt>
+        <dd>
+<span class="refAuthor">Dunbar, L.</span>, <span class="refAuthor">Malis, A. G.</span>, <span class="refAuthor">Jacquenet, C.</span>, <span class="refAuthor">Toy, M.</span>, and <span class="refAuthor">K. Majumdar</span>, <span class="refTitle">"Dynamic Networks to Hybrid Cloud DCs: Problem Statement and Mitigation Practices"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rtgwg-net2cloud-problem-statement-29</span>, <time datetime="2023-08-24" class="refDate">24 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-net2cloud-problem-statement-29">https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-net2cloud-problem-statement-29</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-rtgwg-segment-routing-ti-lfa">[I-D.ietf-rtgwg-segment-routing-ti-lfa]</dt>
+        <dd>
+<span class="refAuthor">Litkowski, S.</span>, <span class="refAuthor">Bashandy, A.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Francois, P.</span>, <span class="refAuthor">Decraene, B.</span>, and <span class="refAuthor">D. Voyer</span>, <span class="refTitle">"Topology Independent Fast Reroute using Segment Routing"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rtgwg-segment-routing-ti-lfa-11</span>, <time datetime="2023-06-30" class="refDate">30 June 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-segment-routing-ti-lfa-11">https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-segment-routing-ti-lfa-11</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-rtgwg-srv6-egress-protection">[I-D.ietf-rtgwg-srv6-egress-protection]</dt>
+        <dd>
+<span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Chen, H.</span>, <span class="refAuthor">Toy, M.</span>, <span class="refAuthor">Cao, C.</span>, and <span class="refAuthor">T. He</span>, <span class="refTitle">"SRv6 Path Egress Protection"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rtgwg-srv6-egress-protection-14</span>, <time datetime="2023-08-29" class="refDate">29 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-srv6-egress-protection-14">https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-srv6-egress-protection-14</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-spring-nsh-sr">[I-D.ietf-spring-nsh-sr]</dt>
+        <dd>
+<span class="refAuthor">Guichard, J.</span> and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"Integration of Network Service Header (NSH) and Segment Routing for Service Function Chaining (SFC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-spring-nsh-sr-15</span>, <time datetime="2023-06-06" class="refDate">6 June 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-spring-nsh-sr-15">https://datatracker.ietf.org/doc/html/draft-ietf-spring-nsh-sr-15</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-spring-sr-service-programming">[I-D.ietf-spring-sr-service-programming]</dt>
+        <dd>
+<span class="refAuthor">Clad, F.</span>, <span class="refAuthor">Xu, X.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Bernier, D.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Ma, S.</span>, <span class="refAuthor">Yadlapalli, C.</span>, <span class="refAuthor">Henderickx, W.</span>, and <span class="refAuthor">S. Salsano</span>, <span class="refTitle">"Service Programming with Segment Routing"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-spring-sr-service-programming-08</span>, <time datetime="2023-08-21" class="refDate">21 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-spring-sr-service-programming-08">https://datatracker.ietf.org/doc/html/draft-ietf-spring-sr-service-programming-08</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teas-enhanced-vpn">[I-D.ietf-teas-enhanced-vpn]</dt>
+        <dd>
+<span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Bryant, S.</span>, <span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Miyasaka, T.</span>, and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"A Framework for Enhanced Virtual Private Network (VPN+)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-enhanced-vpn-14</span>, <time datetime="2023-07-28" class="refDate">28 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-enhanced-vpn-14">https://datatracker.ietf.org/doc/html/draft-ietf-teas-enhanced-vpn-14</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.lc-6man-generalized-srh">[I-D.lc-6man-generalized-srh]</dt>
+        <dd>
+<span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Cheng, W.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Tian, H.</span>, and <span class="refAuthor">F. Zhao</span>, <span class="refTitle">"Generalized Segment Routing Header"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-lc-6man-generalized-srh-03</span>, <time datetime="2021-02-09" class="refDate">9 February 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-lc-6man-generalized-srh-03">https://datatracker.ietf.org/doc/html/draft-lc-6man-generalized-srh-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.li-6man-app-aware-ipv6-network">[I-D.li-6man-app-aware-ipv6-network]</dt>
+        <dd>
+<span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Li, X.</span>, <span class="refAuthor">Liu, P.</span>, <span class="refAuthor">Liu, C.</span>, and <span class="refAuthor">K. Ebisawa</span>, <span class="refTitle">"Application-aware IPv6 Networking (APN6) Encapsulation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-li-6man-app-aware-ipv6-network-03</span>, <time datetime="2021-02-22" class="refDate">22 February 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-li-6man-app-aware-ipv6-network-03">https://datatracker.ietf.org/doc/html/draft-li-6man-app-aware-ipv6-network-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.li-apn-framework">[I-D.li-apn-framework]</dt>
+        <dd>
+<span class="refAuthor">Li, Z.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Liu, P.</span>, <span class="refAuthor">Cao, C.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"Application-aware Networking (APN) Framework"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-li-apn-framework-07</span>, <time datetime="2023-04-03" class="refDate">3 April 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-li-apn-framework-07">https://datatracker.ietf.org/doc/html/draft-li-apn-framework-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.li-pce-pcep-pmtu">[I-D.li-pce-pcep-pmtu]</dt>
+        <dd>
+<span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Han, L.</span>, and <span class="refAuthor">L. Ndifor</span>, <span class="refTitle">"Support for Path MTU (PMTU) in the Path Computation Element (PCE) communication Protocol (PCEP)."</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-li-pce-pcep-pmtu-05</span>, <time datetime="2021-10-21" class="refDate">21 October 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-li-pce-pcep-pmtu-05">https://datatracker.ietf.org/doc/html/draft-li-pce-pcep-pmtu-05</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.li-spring-srv6-security-consideration">[I-D.li-spring-srv6-security-consideration]</dt>
+        <dd>
+<span class="refAuthor">Li, C.</span>, <span class="refAuthor">Geng, N.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Tian, H.</span>, <span class="refAuthor">tongtian124</span>, <span class="refAuthor">Li, Z.</span>, and <span class="refAuthor">J. Mao</span>, <span class="refTitle">"Security Considerations for SRv6 Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-li-spring-srv6-security-consideration-11</span>, <time datetime="2023-07-23" class="refDate">23 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-li-spring-srv6-security-consideration-11">https://datatracker.ietf.org/doc/html/draft-li-spring-srv6-security-consideration-11</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.song-opsawg-ifit-framework">[I-D.song-opsawg-ifit-framework]</dt>
+        <dd>
+<span class="refAuthor">Song, H.</span>, <span class="refAuthor">Qin, F.</span>, <span class="refAuthor">Chen, H.</span>, <span class="refAuthor">Jin, J.</span>, and <span class="refAuthor">J. Shin</span>, <span class="refTitle">"Framework for In-situ Flow Information Telemetry"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-song-opsawg-ifit-framework-20</span>, <time datetime="2023-04-24" class="refDate">24 April 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-song-opsawg-ifit-framework-20">https://datatracker.ietf.org/doc/html/draft-song-opsawg-ifit-framework-20</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.srcompdt-spring-compression-requirement">[I-D.srcompdt-spring-compression-requirement]</dt>
+        <dd>
+<span class="refAuthor">Cheng, W.</span>, <span class="refAuthor">Xie, C.</span>, <span class="refAuthor">Bonica, R.</span>, <span class="refAuthor">Dukes, D.</span>, <span class="refAuthor">Li, C.</span>, <span class="refAuthor">Peng, S.</span>, and <span class="refAuthor">W. Henderickx</span>, <span class="refTitle">"Compressed SRv6 SID List Requirements"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-srcompdt-spring-compression-requirement-07</span>, <time datetime="2021-07-11" class="refDate">11 July 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-srcompdt-spring-compression-requirement-07">https://datatracker.ietf.org/doc/html/draft-srcompdt-spring-compression-requirement-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7665">[RFC7665]</dt>
+        <dd>
+<span class="refAuthor">Halpern, J., Ed.</span> and <span class="refAuthor">C. Pignataro, Ed.</span>, <span class="refTitle">"Service Function Chaining (SFC) Architecture"</span>, <span class="seriesInfo">RFC 7665</span>, <span class="seriesInfo">DOI 10.17487/RFC7665</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7665">https://www.rfc-editor.org/rfc/rfc7665</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7799">[RFC7799]</dt>
+        <dd>
+<span class="refAuthor">Morton, A.</span>, <span class="refTitle">"Active and Passive Metrics and Methods (with Hybrid Types In-Between)"</span>, <span class="seriesInfo">RFC 7799</span>, <span class="seriesInfo">DOI 10.17487/RFC7799</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7799">https://www.rfc-editor.org/rfc/rfc7799</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8201">[RFC8201]</dt>
+        <dd>
+<span class="refAuthor">McCann, J.</span>, <span class="refAuthor">Deering, S.</span>, <span class="refAuthor">Mogul, J.</span>, and <span class="refAuthor">R. Hinden, Ed.</span>, <span class="refTitle">"Path MTU Discovery for IP version 6"</span>, <span class="seriesInfo">STD 87</span>, <span class="seriesInfo">RFC 8201</span>, <span class="seriesInfo">DOI 10.17487/RFC8201</span>, <time datetime="2017-07" class="refDate">July 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8201">https://www.rfc-editor.org/rfc/rfc8201</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8986">[RFC8986]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Camarillo, P., Ed.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">Z. Li</span>, <span class="refTitle">"Segment Routing over IPv6 (SRv6) Network Programming"</span>, <span class="seriesInfo">RFC 8986</span>, <span class="seriesInfo">DOI 10.17487/RFC8986</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8986">https://www.rfc-editor.org/rfc/rfc8986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9252">[RFC9252]</dt>
+        <dd>
+<span class="refAuthor">Dawra, G., Ed.</span>, <span class="refAuthor">Talaulikar, K., Ed.</span>, <span class="refAuthor">Raszuk, R.</span>, <span class="refAuthor">Decraene, B.</span>, <span class="refAuthor">Zhuang, S.</span>, and <span class="refAuthor">J. Rabadan</span>, <span class="refTitle">"BGP Overlay Services Based on Segment Routing over IPv6 (SRv6)"</span>, <span class="seriesInfo">RFC 9252</span>, <span class="seriesInfo">DOI 10.17487/RFC9252</span>, <time datetime="2022-07" class="refDate">July 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9252">https://www.rfc-editor.org/rfc/rfc9252</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9326">[RFC9326]</dt>
+        <dd>
+<span class="refAuthor">Song, H.</span>, <span class="refAuthor">Gafni, B.</span>, <span class="refAuthor">Brockners, F.</span>, <span class="refAuthor">Bhandari, S.</span>, and <span class="refAuthor">T. Mizrahi</span>, <span class="refTitle">"In Situ Operations, Administration, and Maintenance (IOAM) Direct Exporting"</span>, <span class="seriesInfo">RFC 9326</span>, <span class="seriesInfo">DOI 10.17487/RFC9326</span>, <time datetime="2022-11" class="refDate">November 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9326">https://www.rfc-editor.org/rfc/rfc9326</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9341">[RFC9341]</dt>
+        <dd>
+<span class="refAuthor">Fioccola, G., Ed.</span>, <span class="refAuthor">Cociglio, M.</span>, <span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Mizrahi, T.</span>, and <span class="refAuthor">T. Zhou</span>, <span class="refTitle">"Alternate-Marking Method"</span>, <span class="seriesInfo">RFC 9341</span>, <span class="seriesInfo">DOI 10.17487/RFC9341</span>, <time datetime="2022-12" class="refDate">December 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9341">https://www.rfc-editor.org/rfc/rfc9341</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9343">[RFC9343]</dt>
+      <dd>
+<span class="refAuthor">Fioccola, G.</span>, <span class="refAuthor">Zhou, T.</span>, <span class="refAuthor">Cociglio, M.</span>, <span class="refAuthor">Qin, F.</span>, and <span class="refAuthor">R. Pang</span>, <span class="refTitle">"IPv6 Application of the Alternate-Marking Method"</span>, <span class="seriesInfo">RFC 9343</span>, <span class="seriesInfo">DOI 10.17487/RFC9343</span>, <time datetime="2022-12" class="refDate">December 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9343">https://www.rfc-editor.org/rfc/rfc9343</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="contributors">
+<section id="appendix-A">
+      <h2 id="name-contributors">
+<a href="#name-contributors" class="section-name selfRef">Contributors</a>
+      </h2>
+<div class="alignLeft art-text artwork" id="appendix-A-1">
+<pre>
+TBD
+
+
+</pre><a href="#appendix-A-1" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="acknowledgements">
+<section id="appendix-B">
+      <h2 id="name-acknowledgements">
+<a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+    </h2>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-C">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Hang Shi</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:shihang9@huawei.com" class="email">shihang9@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Cheng Li</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:c.l@huawei.com" class="email">c.l@huawei.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Zhenbin Li</span></div>
+<div dir="auto" class="left"><span class="org">Huawei Technologies</span></div>
+<div dir="auto" class="left"><span class="country-name">China</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:lizhenbin@huawei.com" class="email">lizhenbin@huawei.com</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
