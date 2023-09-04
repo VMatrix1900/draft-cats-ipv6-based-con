@@ -39,8 +39,8 @@ normative:
   RFC8402:
 informative:
   I-D.ietf-rtgwg-net2cloud-problem-statement:
-  I-D.ietf-spring-srv6-network-programming:
-  I-D.ietf-bess-srv6-services:
+  RFC8986:
+  RFC9252:
   RFC7665:
   RFC7799:
   I-D.dukes-spring-sr-for-sdwan:
@@ -51,10 +51,10 @@ informative:
   I-D.ietf-spring-nsh-sr:
   I-D.ietf-teas-enhanced-vpn:
   I-D.dong-6man-enhanced-vpn-vtn-id:
-  RFC8321:
-  I-D.ietf-6man-ipv6-alt-mark:
+  RFC9341:
+  RFC9343:
   I-D.ietf-ippm-ioam-ipv6-options:
-  I-D.ietf-ippm-ioam-direct-export:
+  RFC9326:
   I-D.song-opsawg-ifit-framework:
   I-D.ietf-rtgwg-segment-routing-ti-lfa:
   I-D.hu-spring-segment-routing-proxy-forwarding:
@@ -460,7 +460,7 @@ VPN is a basic and essential services for cloud-networks
 interconnections.
 
 SRv6 supports VPN by encoding the VPN information into the VPN
-SID {{I-D.ietf-spring-srv6-network-programming}}.
+SID {{RFC8986}}.
 
 Based on IPv6, SRv6 VPN can be established across multiple
 domains. It avoids configuring VPN services at each boundary nodes
@@ -469,7 +469,7 @@ Deploying VPN based on SRv6 can shorten the duration
 significantly.
 
 Also, L2VPN and L3VPN can be supported uniformly based on EVPN
-control plane {{I-D.ietf-bess-srv6-services}}.
+control plane {{RFC9252}}.
 Therefore, combining the SRv6 data plane and EVPN control plane, the
 VPN can be deployed in an easy and flexible way in IPv6-based
 CON.
@@ -544,8 +544,8 @@ VTN with guaranteed resource.
 
 ### IPv6-based On-path Measurement
 
-The extension of supporting Alternate Marking Method {{RFC8321}} in IPv6
-is defined in {{I-D.ietf-6man-ipv6-alt-mark}}. It describes how the
+The extension of supporting Alternate Marking Method {{RFC9341}} in IPv6
+is defined in {{RFC9343}}. It describes how the
 Alternate Marking Method to be used as the hybrid performance
 measurement tool in an IPv6 domain by defining a new Extension
 Header Option.
@@ -560,7 +560,7 @@ option, called IOAM option to support carrying IOAM metadata in the
 IPv6 data packet. However, carrying all the metadata in the data
 packet will bring challenges for hardware processing. For instance,
 long-length metadata may cause recircle in processing. Therefore,
-{{I-D.ietf-ippm-ioam-direct-export}} defines a direct
+{{RFC9326}} defines a direct
 export option in IOAM, which enables the nodes to export the
 metadata to collector directly. Furthermore,
 {{I-D.song-opsawg-ifit-framework}} outlines a high-level
