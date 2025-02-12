@@ -5,8 +5,8 @@
 Computing-Aware Traffic Steering                                  H. Shi
 Internet-Draft                                                     C. Li
 Intended status: Informational                                     Z. Li
-Expires: 7 March 2024                                Huawei Technologies
-                                                        4 September 2023
+Expires: 16 August 2025                              Huawei Technologies
+                                                        12 February 2025
 
 
                   IPv6-based Cloud-Oriented Networking
@@ -43,11 +43,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 March 2024.
+   This Internet-Draft will expire on 16 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -114,7 +114,7 @@ Table of Contents
    L2VPN/L3VPN), challenges are introduced.
    [I-D.ietf-rtgwg-net2cloud-problem-statement] describes the problems
    that enterprises face today when interconnecting their branch offices
-   with dynamic workloads in third party data centers (a.k.a.  Cloud
+   with dynamic workloads in third party data centers (a.k.a. Cloud
    DCs).
 
    SD-WAN is a flexible WAN architecture that enables flexible network-
@@ -749,9 +749,9 @@ Table of Contents
               Chen, H., Hu, Z., Chen, H., Geng, X., Liu, Y., and G. S.
               Mishra, "SRv6 Midpoint Protection", Work in Progress,
               Internet-Draft, draft-chen-rtgwg-srv6-midpoint-protection-
-              12, 12 August 2023,
+              14, 1 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-chen-rtgwg-
-              srv6-midpoint-protection-12>.
+              srv6-midpoint-protection-14>.
 
    [I-D.cl-spring-generalized-srv6-for-cmpr]
               Cheng, W., Li, Z., Li, C., Clad, F., Liu, A., Xie, C.,
@@ -812,65 +812,69 @@ Table of Contents
               Zhu, Y., Hu, Z., Peng, S., and R. Mwehair, "Signaling
               Maximum Transmission Unit (MTU) using BGP-LS", Work in
               Progress, Internet-Draft, draft-ietf-idr-bgp-ls-link-mtu-
-              05, 26 July 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-idr-bgp-ls-link-mtu-05>.
+              08, 17 September 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-
+              ls-link-mtu-08>.
 
    [I-D.ietf-idr-segment-routing-te-policy]
               Previdi, S., Filsfils, C., Talaulikar, K., Mattes, P., and
               D. Jain, "Advertising Segment Routing Policies in BGP",
               Work in Progress, Internet-Draft, draft-ietf-idr-segment-
-              routing-te-policy-23, 25 July 2023,
+              routing-te-policy-26, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-idr-
-              segment-routing-te-policy-23>.
+              segment-routing-te-policy-26>.
 
    [I-D.ietf-idr-sr-policy-path-mtu]
               Li, C., Zhu, Y., El Sawaf, A., and Z. Li, "Segment Routing
               Path MTU in BGP", Work in Progress, Internet-Draft, draft-
-              ietf-idr-sr-policy-path-mtu-07, 4 May 2023,
+              ietf-idr-sr-policy-path-mtu-10, 24 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-idr-sr-
-              policy-path-mtu-07>.
+              policy-path-mtu-10>.
 
    [I-D.ietf-ippm-ioam-ipv6-options]
-              Bhandari, S. and F. Brockners, "In-situ OAM IPv6 Options",
-              Work in Progress, Internet-Draft, draft-ietf-ippm-ioam-
-              ipv6-options-12, 7 May 2023,
+              Bhandari, S. and F. Brockners, "IPv6 Options for In Situ
+              Operations, Administration, and Maintenance (IOAM)", Work
+              in Progress, Internet-Draft, draft-ietf-ippm-ioam-ipv6-
+              options-12, 7 May 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ippm-
               ioam-ipv6-options-12>.
 
    [I-D.ietf-pce-segment-routing-policy-cp]
-              Koldychev, M., Sivabalan, S., Barth, C., Peng, S., and H.
-              Bidgoli, "PCEP extension to support Segment Routing Policy
-              Candidate Paths", Work in Progress, Internet-Draft, draft-
-              ietf-pce-segment-routing-policy-cp-12, 24 July 2023,
+              Koldychev, M., Sivabalan, S., Sidor, S., Barth, C., Peng,
+              S., and H. Bidgoli, "Path Computation Element
+              Communication Protocol (PCEP) Extensions for Segment
+              Routing (SR) Policy Candidate Paths", Work in Progress,
+              Internet-Draft, draft-ietf-pce-segment-routing-policy-cp-
+              20, 20 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-pce-
-              segment-routing-policy-cp-12>.
+              segment-routing-policy-cp-20>.
 
    [I-D.ietf-rtgwg-net2cloud-problem-statement]
               Dunbar, L., Malis, A. G., Jacquenet, C., Toy, M., and K.
-              Majumdar, "Dynamic Networks to Hybrid Cloud DCs: Problem
-              Statement and Mitigation Practices", Work in Progress,
-              Internet-Draft, draft-ietf-rtgwg-net2cloud-problem-
-              statement-29, 24 August 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-
-              net2cloud-problem-statement-29>.
+              Majumdar, "Dynamic Networks to Hybrid Cloud DCs: Problems
+              and Mitigation Practices", Work in Progress, Internet-
+              Draft, draft-ietf-rtgwg-net2cloud-problem-statement-42, 17
+              January 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-rtgwg-net2cloud-problem-statement-42>.
 
    [I-D.ietf-rtgwg-segment-routing-ti-lfa]
-              Litkowski, S., Bashandy, A., Filsfils, C., Francois, P.,
+              Bashandy, A., Litkowski, S., Filsfils, C., Francois, P.,
               Decraene, B., and D. Voyer, "Topology Independent Fast
               Reroute using Segment Routing", Work in Progress,
               Internet-Draft, draft-ietf-rtgwg-segment-routing-ti-lfa-
-              11, 30 June 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-rtgwg-segment-routing-ti-lfa-11>.
+              20, 2 February 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-
+              segment-routing-ti-lfa-20>.
 
    [I-D.ietf-rtgwg-srv6-egress-protection]
-              Hu, Z., Chen, H., Toy, M., Cao, C., and T. He, "SRv6 Path
+              He, T., Hu, Z., Chen, H., Toy, M., and C. Cao, "SRv6 Path
               Egress Protection", Work in Progress, Internet-Draft,
-              draft-ietf-rtgwg-srv6-egress-protection-14, 29 August
-              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rtgwg-srv6-egress-protection-14>.
+              draft-ietf-rtgwg-srv6-egress-protection-17, 17 November
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              rtgwg-srv6-egress-protection-17>.
 
    [I-D.ietf-spring-nsh-sr]
-              Guichard, J. and J. Tantsura, "Integration of Network
+              Guichard, J. and J. Tantsura, "Integration of the Network
               Service Header (NSH) and Segment Routing for Service
               Function Chaining (SFC)", Work in Progress, Internet-
               Draft, draft-ietf-spring-nsh-sr-15, 6 June 2023,
@@ -882,17 +886,17 @@ Table of Contents
               Decraene, B., Ma, S., Yadlapalli, C., Henderickx, W., and
               S. Salsano, "Service Programming with Segment Routing",
               Work in Progress, Internet-Draft, draft-ietf-spring-sr-
-              service-programming-08, 21 August 2023,
+              service-programming-10, 23 August 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-spring-
-              sr-service-programming-08>.
+              sr-service-programming-10>.
 
    [I-D.ietf-teas-enhanced-vpn]
               Dong, J., Bryant, S., Li, Z., Miyasaka, T., and Y. Lee, "A
-              Framework for Enhanced Virtual Private Network (VPN+)",
-              Work in Progress, Internet-Draft, draft-ietf-teas-
-              enhanced-vpn-14, 28 July 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              enhanced-vpn-14>.
+              Framework for Network Resource Partition (NRP) based
+              Enhanced Virtual Private Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-enhanced-vpn-20, 14 June
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-enhanced-vpn-20>.
 
    [I-D.lc-6man-generalized-srh]
               Li, Z., Li, C., Cheng, W., Xie, C., Li, C., Tian, H., and
@@ -938,9 +942,9 @@ Table of Contents
               Song, H., Qin, F., Chen, H., Jin, J., and J. Shin,
               "Framework for In-situ Flow Information Telemetry", Work
               in Progress, Internet-Draft, draft-song-opsawg-ifit-
-              framework-20, 24 April 2023,
+              framework-21, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-song-opsawg-
-              ifit-framework-20>.
+              ifit-framework-21>.
 
    [I-D.srcompdt-spring-compression-requirement]
               Cheng, W., Xie, C., Bonica, R., Dukes, D., Li, C., Peng,
