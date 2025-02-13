@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T01:09:01.943650+00:00",
+  "timestamp": "2025-02-13T01:11:40.759950+00:00",
   "repo": "VMatrix1900/draft-cats-ipv6-based-con",
   "labels": [
     {
@@ -47,8 +47,44 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "template_sync",
+      "description": "",
+      "color": "1D76DB"
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOKPGNNs6K5M89",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-cats-ipv6-based-con/pull/1",
+      "state": "MERGED",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template ea87c4f",
+      "createdAt": "2025-02-12T03:15:19Z",
+      "updatedAt": "2025-02-12T03:17:27Z",
+      "baseRepository": "VMatrix1900/draft-cats-ipv6-based-con",
+      "baseRefName": "main",
+      "baseRefOid": "6ca68e4eee2feda3dc744b55af8d0fd3f78ee6b4",
+      "headRepository": "VMatrix1900/draft-cats-ipv6-based-con",
+      "headRefName": "chore/template_sync_ea87c4f",
+      "headRefOid": "f2ab9cadd950be085a022964548e5c59e55063cc",
+      "closedAt": "2025-02-12T03:17:27Z",
+      "mergedAt": "2025-02-12T03:17:27Z",
+      "mergedBy": "VMatrix1900",
+      "mergeCommit": {
+        "oid": "3e147f01fcb88affc55c64696687fa7af87846e9"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
