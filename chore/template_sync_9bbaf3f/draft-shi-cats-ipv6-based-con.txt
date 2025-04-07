@@ -5,8 +5,8 @@
 Computing-Aware Traffic Steering                                  H. Shi
 Internet-Draft                                                     C. Li
 Intended status: Informational                                     Z. Li
-Expires: 16 August 2025                              Huawei Technologies
-                                                        12 February 2025
+Expires: 9 October 2025                              Huawei Technologies
+                                                            7 April 2025
 
 
                   IPv6-based Cloud-Oriented Networking
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 August 2025.
+   This Internet-Draft will expire on 9 October 2025.
 
 Copyright Notice
 
@@ -812,9 +812,8 @@ Table of Contents
               Zhu, Y., Hu, Z., Peng, S., and R. Mwehair, "Signaling
               Maximum Transmission Unit (MTU) using BGP-LS", Work in
               Progress, Internet-Draft, draft-ietf-idr-bgp-ls-link-mtu-
-              08, 17 September 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-
-              ls-link-mtu-08>.
+              09, 21 March 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-idr-bgp-ls-link-mtu-09>.
 
    [I-D.ietf-idr-segment-routing-te-policy]
               Previdi, S., Filsfils, C., Talaulikar, K., Mattes, P., and
@@ -827,9 +826,9 @@ Table of Contents
    [I-D.ietf-idr-sr-policy-path-mtu]
               Li, C., Zhu, Y., El Sawaf, A., and Z. Li, "Segment Routing
               Path MTU in BGP", Work in Progress, Internet-Draft, draft-
-              ietf-idr-sr-policy-path-mtu-10, 24 September 2024,
+              ietf-idr-sr-policy-path-mtu-11, 3 April 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-idr-sr-
-              policy-path-mtu-10>.
+              policy-path-mtu-11>.
 
    [I-D.ietf-ippm-ioam-ipv6-options]
               Bhandari, S. and F. Brockners, "IPv6 Options for In Situ
@@ -845,9 +844,8 @@ Table of Contents
               Communication Protocol (PCEP) Extensions for Segment
               Routing (SR) Policy Candidate Paths", Work in Progress,
               Internet-Draft, draft-ietf-pce-segment-routing-policy-cp-
-              20, 20 January 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-pce-
-              segment-routing-policy-cp-20>.
+              27, 4 April 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-pce-segment-routing-policy-cp-27>.
 
    [I-D.ietf-rtgwg-net2cloud-problem-statement]
               Dunbar, L., Malis, A. G., Jacquenet, C., Toy, M., and K.
@@ -862,9 +860,9 @@ Table of Contents
               Decraene, B., and D. Voyer, "Topology Independent Fast
               Reroute using Segment Routing", Work in Progress,
               Internet-Draft, draft-ietf-rtgwg-segment-routing-ti-lfa-
-              20, 2 February 2025,
+              21, 12 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-
-              segment-routing-ti-lfa-20>.
+              segment-routing-ti-lfa-21>.
 
    [I-D.ietf-rtgwg-srv6-egress-protection]
               He, T., Hu, Z., Chen, H., Toy, M., and C. Cao, "SRv6 Path
@@ -886,9 +884,9 @@ Table of Contents
               Decraene, B., Ma, S., Yadlapalli, C., Henderickx, W., and
               S. Salsano, "Service Programming with Segment Routing",
               Work in Progress, Internet-Draft, draft-ietf-spring-sr-
-              service-programming-10, 23 August 2024,
+              service-programming-11, 23 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-spring-
-              sr-service-programming-10>.
+              sr-service-programming-11>.
 
    [I-D.ietf-teas-enhanced-vpn]
               Dong, J., Bryant, S., Li, Z., Miyasaka, T., and Y. Lee, "A
