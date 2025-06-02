@@ -5,8 +5,8 @@
 Computing-Aware Traffic Steering                                  H. Shi
 Internet-Draft                                                     C. Li
 Intended status: Informational                                     Z. Li
-Expires: 9 October 2025                              Huawei Technologies
-                                                            7 April 2025
+Expires: 4 December 2025                             Huawei Technologies
+                                                             2 June 2025
 
 
                   IPv6-based Cloud-Oriented Networking
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 October 2025.
+   This Internet-Draft will expire on 4 December 2025.
 
 Copyright Notice
 
@@ -867,9 +867,9 @@ Table of Contents
    [I-D.ietf-rtgwg-srv6-egress-protection]
               He, T., Hu, Z., Chen, H., Toy, M., and C. Cao, "SRv6 Path
               Egress Protection", Work in Progress, Internet-Draft,
-              draft-ietf-rtgwg-srv6-egress-protection-17, 17 November
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              rtgwg-srv6-egress-protection-17>.
+              draft-ietf-rtgwg-srv6-egress-protection-18, 27 May 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-
+              srv6-egress-protection-18>.
 
    [I-D.ietf-spring-nsh-sr]
               Guichard, J. and J. Tantsura, "Integration of the Network
@@ -952,10 +952,7 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-srcompdt-
               spring-compression-requirement-07>.
 
-   [RFC7665]  Halpern, J., Ed. and C. Pignataro, Ed., "Service Function
-              Chaining (SFC) Architecture", RFC 7665,
-              DOI 10.17487/RFC7665, October 2015,
-              <https://www.rfc-editor.org/rfc/rfc7665>.
+   [RFC7665]  "*** BROKEN REFERENCE ***".
 
    [RFC7799]  Morton, A., "Active and Passive Metrics and Methods (with
               Hybrid Types In-Between)", RFC 7799, DOI 10.17487/RFC7799,
