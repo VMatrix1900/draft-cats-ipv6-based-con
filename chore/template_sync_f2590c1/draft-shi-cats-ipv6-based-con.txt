@@ -5,8 +5,8 @@
 Computing-Aware Traffic Steering                                  H. Shi
 Internet-Draft                                                     C. Li
 Intended status: Informational                                     Z. Li
-Expires: 11 December 2025                            Huawei Technologies
-                                                             9 June 2025
+Expires: 29 January 2026                             Huawei Technologies
+                                                            28 July 2025
 
 
                   IPv6-based Cloud-Oriented Networking
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 December 2025.
+   This Internet-Draft will expire on 29 January 2026.
 
 Copyright Notice
 
@@ -867,9 +867,9 @@ Table of Contents
    [I-D.ietf-rtgwg-srv6-egress-protection]
               He, T., Hu, Z., Chen, H., Toy, M., and C. Cao, "SRv6 Path
               Egress Protection", Work in Progress, Internet-Draft,
-              draft-ietf-rtgwg-srv6-egress-protection-18, 27 May 2025,
+              draft-ietf-rtgwg-srv6-egress-protection-20, 24 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rtgwg-
-              srv6-egress-protection-18>.
+              srv6-egress-protection-20>.
 
    [I-D.ietf-spring-nsh-sr]
               Guichard, J. and J. Tantsura, "Integration of the Network
