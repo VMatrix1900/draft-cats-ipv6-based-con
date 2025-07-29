@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-27T01:46:59.855753+00:00",
+  "timestamp": "2025-07-29T01:50:32.260387+00:00",
   "repo": "VMatrix1900/draft-cats-ipv6-based-con",
   "labels": [
     {
@@ -163,7 +163,7 @@
       "id": "PR_kwDOKPGNNs6Zm748",
       "title": "upstream merge template repository",
       "url": "https://github.com/VMatrix1900/draft-cats-ipv6-based-con/pull/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "VMatrix1900",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -172,13 +172,49 @@
       ],
       "body": "Merge https://github.com/martinthomson/internet-draft-template 666634c",
       "createdAt": "2025-06-09T01:19:59Z",
-      "updatedAt": "2025-06-09T01:20:00Z",
+      "updatedAt": "2025-07-28T01:26:51Z",
       "baseRepository": "VMatrix1900/draft-cats-ipv6-based-con",
       "baseRefName": "main",
       "baseRefOid": "3e147f01fcb88affc55c64696687fa7af87846e9",
       "headRepository": "VMatrix1900/draft-cats-ipv6-based-con",
       "headRefName": "chore/template_sync_666634c",
       "headRefOid": "7eb238d382200d6bf88f3f2419bb4576e51f0531",
+      "closedAt": "2025-07-28T01:26:49Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "VMatrix1900",
+          "authorAssociation": "OWNER",
+          "body": "[actions-template-sync] :construction_worker: automatically closed because there is a new open PR",
+          "createdAt": "2025-07-28T01:26:49Z",
+          "updatedAt": "2025-07-28T01:26:49Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOKPGNNs6g212F",
+      "title": "upstream merge template repository",
+      "url": "https://github.com/VMatrix1900/draft-cats-ipv6-based-con/pull/5",
+      "state": "OPEN",
+      "author": "VMatrix1900",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "template_sync"
+      ],
+      "body": "Merge https://github.com/martinthomson/internet-draft-template f2590c1",
+      "createdAt": "2025-07-28T01:26:51Z",
+      "updatedAt": "2025-07-28T01:26:52Z",
+      "baseRepository": "VMatrix1900/draft-cats-ipv6-based-con",
+      "baseRefName": "main",
+      "baseRefOid": "3e147f01fcb88affc55c64696687fa7af87846e9",
+      "headRepository": "VMatrix1900/draft-cats-ipv6-based-con",
+      "headRefName": "chore/template_sync_f2590c1",
+      "headRefOid": "8c7a701e714f86352e18592fb6c4b65acbd64089",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
